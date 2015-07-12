@@ -1,0 +1,562 @@
+<html style="height: 100%;"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Sử dụng Vagrant trong lập trình </title>
+
+<meta name="description" content="TODO">
+<meta name="author" content="TODO">
+
+<style>
+.componentContainer {
+    position: absolute;
+    line-height: normal;
+    /*-webkit-transform-origin: 135% 135%;
+    -moz-transform-origin: 135% 135%;
+    transform-origin: 135% 135%;*/
+}
+
+.transformContainer {
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+.bg {
+    width: 100%;
+    height: 100%;
+}
+</style>
+
+<link rel="stylesheet" href="Deck%20Title_files/default-reset.css">
+<link href="Deck%20Title_files/main.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="Deck%20Title_files/default.css" id="theme">
+<link href="Deck%20Title_files/web-fonts.css" rel="stylesheet" type="text/css">
+<link href="Deck%20Title_files/backgroundClasses.css" rel="stylesheet" type="text/css">
+<link href="Deck%20Title_files/surfaceClasses.css" rel="stylesheet" type="text/css">
+
+<link rel="shortcut icon" href="http://strut.io/editor/preview_export/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="http://strut.io/editor/preview_export/apple-touch-icon.png" type="image/png">
+
+<style>
+.reveal.themedArea {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
+
+<script src="Deck%20Title_files/analytics.js" async=""></script><script type="text/javascript" src="Deck%20Title_files/dataset-shim.js"></script>
+<script type="text/javascript" src="Deck%20Title_files/impress.js"></script>
+
+<script src="Deck%20Title_files/onready.js"></script>
+<script src="Deck%20Title_files/loadPresentation.js"></script>
+<script>
+ready(function() {
+    if (document.getElementById('launched-placeholder'))
+        loadPresentation();
+
+    if (!window.presStarted) {
+        startPres(document, window);
+        impress().init();   
+    }
+
+    if ("ontouchstart" in document.documentElement) { 
+        document.querySelector(".hint").innerHTML = 
+            "<p>Tap on the left or right to navigate</p>";
+    }
+});
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42322531-1', 'strut.io');
+    ga('send', 'pageview');
+    </script>
+</head>
+<body style="height: 100%; overflow: hidden;" class="impress-supported impress-enabled">
+<style type="text/css">
+
+</style>
+<style>
+
+</style>
+<style>
+
+
+
+	
+		
+		
+		.slideContainer.strut-slide-0 {
+			background-image: url(https://www.vagrantup.com/images/vagrant_header_background-482a12a7.png);
+		}
+		
+	
+
+	
+		
+		
+		.slideContainer.strut-slide-1 {
+			background-image: url(https://www.vagrantup.com/images/vagrant_header_background-482a12a7.png);
+		}
+		
+	
+
+	
+		
+		
+	
+
+	
+		
+		
+	
+
+	
+		
+		
+	
+
+	
+		
+		
+	
+
+	
+		
+		
+	
+
+	
+		
+		
+	
+
+	
+		
+		
+	
+
+	
+		
+		
+	
+
+	
+		
+		
+	
+
+</style>
+<!-- This is a work around / hack to get the user's browser to download the fonts 
+ if they decide to save the presentation. -->
+<div style="visibility: hidden; width: 0px; height: 0px">
+<img src="Deck%20Title_files/Lato-Bold.bin">
+<img src="Deck%20Title_files/HammersmithOne.bin">
+<img src="Deck%20Title_files/Droid-Sans-Mono.bin">
+<img src="Deck%20Title_files/Gorditas-Regular.bin">
+<img src="Deck%20Title_files/FredokaOne-Regular.bin">
+<img src="Deck%20Title_files/Ubuntu.bin">
+<img src="Deck%20Title_files/Ubuntu-Bold.bin">
+<img src="Deck%20Title_files/PressStart2P-Regular.bin">
+<img src="Deck%20Title_files/Lato-BoldItalic.bin">
+<img src="Deck%20Title_files/AbrilFatface-Regular.bin">
+<img src="Deck%20Title_files/Lato-Regular.bin">
+</div>
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div class="bg  strut-surface">
+<div class="bg innerBg strut-slide-0">
+<div style="position: absolute; transform-origin: left top 0px; transition: all 500ms ease-in-out 250ms; transform-style: preserve-3d; top: 50%; left: 50%; transform: perspective(3305.6px) scale(0.302517);" id="impress"><div style="position: absolute; transform-origin: left top 0px; transition: all 500ms ease-in-out 0ms; transform-style: preserve-3d; transform: rotateZ(0deg) rotateY(0deg) rotateX(0deg) translate3d(-2416.64px, -2764.8px, 0px);">
+	
+		
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(2416.64px, 2764.8px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-1" class="step present active" data-state="strut-slide-0" data-x="2416.64" data-y="2764.8" data-scale="3">
+			<div class=" slideContainer strut-slide-0" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+			
+			</div>
+			
+			<div class="componentContainer " style="top: 444px; left: 131px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 106px;" class="antialias">
+<font color="#000000"><b>Sử dụng Vagrant trong lập trình </b></font><br>
+</div>
+</div>
+</div>
+			
+			</div>
+		
+		</div>
+	
+		
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(6280.53px, 2764.8px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-2" class="step future" data-state="strut-slide-1" data-x="6280.533333333334" data-y="2764.8" data-scale="3">
+			<div class=" slideContainer strut-slide-1" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+			
+			</div>
+			
+			<div class="componentContainer " style="top: 294px; left: 139px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 83px;" class="antialias">
+Công cụ <br>
+</div>
+</div>
+</div>
+			
+			<div class="componentContainer " style="top: 425px; left: 128px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 97px;" class="antialias">
+<font color="#000000"><b>tạo dựng</b>, <b>chia sẻ</b><br></font>
+</div>
+</div>
+</div>
+			
+			<div class="componentContainer " style="top: 563px; left: 104px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 79px;" class="antialias">
+<b>`Môi trường&nbsp; lập trình`</b><br>
+</div>
+</div>
+</div>
+			
+			</div>
+		
+		</div>
+	
+		
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(10103.5px, 2856.96px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(-4.58366deg) scale(3); transform-style: preserve-3d;" id="step-3" class="step future" data-state="strut-slide-2" data-x="10103.466666666667" data-y="2856.96" data-rotate-z="-4.583662361046586" data-scale="3">
+			<div class="bg-solid-smoke slideContainer strut-slide-2" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+			
+			</div>
+			
+			<div class="componentContainer " style="top: 22px; left: 109px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 62px;" class="antialias">
+Download &amp; install<br>
+</div>
+</div>
+</div>
+			
+			<div class="componentContainer " style="top: 124px; left: 102px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 848px; height: 521.01px;">
+<div class="transformContainer" style="-webkit-transform: scale(0.98, 0.98);
+-moz-transform: scale(0.98, 0.98);
+transform: scale(0.98, 0.98)">
+<img src="Deck%20Title_files/tSs2WvS.png">
+</div>
+</div>
+			
+			</div>
+		
+		</div>
+	
+		
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(13926.4px, 2856.96px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-4" class="step future" data-state="strut-slide-3" data-x="13926.4" data-y="2856.96" data-scale="3">
+			<div class="bg-solid-smoke slideContainer strut-slide-3" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+			
+			</div>
+			
+			<div class="componentContainer " style="top: 300px; left: 72px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 72px;" class="antialias">
+vagrant init ubuntu/trusty32<br>
+</div>
+</div>
+</div>
+			
+			<div class="componentContainer " style="top: 55px; left: 138px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 82px;" class="antialias">
+Tạo lập <br>
+</div>
+</div>
+</div>
+			
+			<div class="componentContainer " style="top: 178px; left: 75px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 63px;" class="antialias">
+vagrant box add ubuntu/trusty32<b><br></b>
+</div>
+</div>
+</div>
+			
+			</div>
+		
+		</div>
+	
+		
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(17763px, 2810.88px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-5" class="step future" data-state="strut-slide-4" data-x="17762.986666666668" data-y="2810.88" data-scale="3">
+			<div class="bg-solid-smoke slideContainer strut-slide-4" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+			
+			</div>
+			
+			<div class="componentContainer " style="top: 264px; left: 39px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 58px;" class="antialias">
+vagrant plugin install vagrant-vbguest<br>
+</div>
+</div>
+</div>
+			
+			<div class="componentContainer " style="top: 29px; left: 55px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 52px;" class="antialias">
+vagrant-vbguest<br>
+</div>
+</div>
+</div>
+			
+			<div class="componentContainer " style="top: 103px; left: 61px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 26px;" class="antialias">
+A Vagrant plugin to keep your VirtualBox Guest Additions up to date <br>
+</div>
+</div>
+</div>
+			
+			</div>
+		
+		</div>
+	
+		
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(21572.3px, 2764.8px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-6" class="step future" data-state="strut-slide-5" data-x="21572.266666666666" data-y="2764.8" data-scale="3">
+			<div class="bg-solid-smoke slideContainer strut-slide-5" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+			
+			</div>
+			
+			<div class="componentContainer " style="top: 29px; left: 165px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 72px;" class="antialias">
+Các dùng vagrant<br>
+</div>
+</div>
+</div>
+			
+			<div class="componentContainer " style="top: 148px; left: 178px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 109px;" class="antialias">
+<b>$ vagrant up<br></b>
+</div>
+</div>
+</div>
+			
+			<div class="componentContainer " style="top: 276px; left: 172px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 99px;" class="antialias">
+<b>$ vagrant&nbsp; ssh <br></b>
+</div>
+</div>
+</div>
+			
+			<div class="componentContainer " style="top: 401px; left: 174px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 92px;" class="antialias">
+<b>$vagrant&nbsp; destroy<br></b>
+</div>
+</div>
+</div>
+			
+			</div>
+		
+		</div>
+	
+		
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(25955px, 2595.84px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-7" class="step future" data-state="strut-slide-6" data-x="25954.986666666668" data-y="2595.84" data-scale="3">
+			<div class="bg-solid-smoke slideContainer strut-slide-6" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+			
+			</div>
+			
+			<div class="componentContainer " style="top: 187px; left: 98px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 72px;" class="antialias">
+$vagrant box outdated<br>$vagrant box update<br>$ vagrant box remove bname<br>
+</div>
+</div>
+</div>
+			
+			<div class="componentContainer " style="top: 39px; left: 122px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 58px;" class="antialias">
+Quản lý box<br>
+</div>
+</div>
+</div>
+			
+			</div>
+		
+		</div>
+	
+		
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(29818.9px, 2595.84px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-8" class="step future" data-state="strut-slide-7" data-x="29818.88" data-y="2595.84" data-scale="3">
+			<div class="bg-solid-smoke slideContainer strut-slide-7" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+			
+			</div>
+			
+			<div class="componentContainer " style="top: 146px; left: -2px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 978px; height: 462.89px;">
+<div class="transformContainer" style="-webkit-transform: scale(0.79, 0.79);
+-moz-transform: scale(0.79, 0.79);
+transform: scale(0.79, 0.79)">
+<img src="Deck%20Title_files/iZKUeia.png">
+</div>
+</div>
+			
+			</div>
+		
+		</div>
+	
+		
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(34515.6px, 2534.4px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-9" class="step future" data-state="strut-slide-8" data-x="34515.62666666666" data-y="2534.4" data-scale="3">
+			<div class="bg-solid-smoke slideContainer strut-slide-8" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+			
+			</div>
+			
+			<div class="componentContainer " style="top: 188px; left: 57px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 72px;" class="antialias">
+<br>
+</div>
+</div>
+</div>
+			
+			<div class="componentContainer " style="top: 18px; left: 31px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 982.13px; height: 785.31px;">
+<div class="transformContainer" style="-webkit-transform: scale(0.99, 0.99);
+-moz-transform: scale(0.99, 0.99);
+transform: scale(0.99, 0.99)">
+<iframe src="Deck%20Title_files/a.html" height="768" width="960"></iframe>
+</div>
+</div>
+			
+			</div>
+		
+		</div>
+	
+		
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(38707.2px, 2519.04px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-10" class="step future" data-state="strut-slide-9" data-x="38707.2" data-y="2519.04" data-scale="3">
+			<div class="bg-solid-smoke slideContainer strut-slide-9" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+			<h2 id="tham-kh-o">Tham khảo</h2>
+<h3 id="-vagrant-document-https-docs-vagrantup-com-"><a href="https://docs.vagrantup.com/">Vagrant document</a></h3>
+<h3 id="-generate-vagrantfile-https-puphpet-com-"><a href="https://puphpet.com/">Generate Vagrantfile </a></h3>
+<h3 id="-vagrant-box-http-vagrantcloud-com-"><a href="http://vagrantcloud.com/">Vagrant box </a></h3>
+
+			</div>
+			
+			<div class="componentContainer " style="top: 187px; left: 108px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 41px;" class="antialias">
+<br>
+</div>
+</div>
+</div>
+			
+			</div>
+		
+		</div>
+	
+		
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(40686.9px, 7065.6px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-11" class="step future" data-state="strut-slide-10" data-x="40686.933333333334" data-y="7065.6" data-scale="3">
+			<div class="bg-solid-smoke slideContainer strut-slide-10" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+			<h2 id="q-a">Q.A</h2>
+<h4 id="t-i-sao-d-ng-vagrant-l-m-m-i-tr-ng-l-p-tr-nh-">Tại sao dùng Vagrant để làm môi trường lập trình ?</h4>
+<p><em>Có sự khác biệt giữa môi trường lập trình và môi trường chạy sản 
+phẩm. Sử dụng Vagrant  giúp làm môi trường lập trình  gần với môi trường
+ sản phẩm hơn.</em></p>
+<h4 id="vagrant-v-xampp-mampp-c-g-kh-c-bi-t-">Vagrant  và XAMPP , MAMPP có gì khác biệt?</h4>
+<p>XAMPP  là môi trường pháp triển php. Trong khi Vagrant có thể giải 
+quyết nhiều vấn đề hơn. Vagrant là công cụ tạo lập môi trường lập trình 
+không chỉ dành riêng cho  ngôn ngữ lập trình cụ thể nào.</p>
+<h4 id="php-developer-n-n-d-ng-vagrant-hay-xampp-">PHP developer  nên dùng Vagrant hay XAMPP?</h4>
+<p>Bạn nên dùng XAMPP, nếu XAMPP đủ cho nhu cầu của bạn.</p>
+
+			</div>
+			
+			<div class="componentContainer " style="top: 198px; left: 117px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 36px;" class="antialias">
+<br>
+</div>
+</div>
+</div>
+			
+			<div class="componentContainer " style="top: 433px; left: 98px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 36px;" class="antialias">
+<br>
+</div>
+</div>
+</div>
+			
+			</div>
+		
+		</div>
+	
+	<div style="position: absolute; transform: translate(-50%, -50%) translate3d(21551.8px, 4792.32px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(9); transform-style: preserve-3d;" id="overview" class="step future" data-state="strut-slide-overview" data-x="21551.786666666667" data-y="4792.32" data-scale="9"></div>
+	
+</div></div>
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+</div>
+</div></body></html>
